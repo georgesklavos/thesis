@@ -1,0 +1,57 @@
+version: '3.7'
+
+services:
+  back:
+    container_name: back
+    build:
+      context: ./back
+      target: development
+    volumes:
+      - ./back:/usr/src/back
+      - /usr/src/back/node_modules
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    env_file:
+      - ./back/.env
+    depends_on:
+      - postgres
+  front:
+    container_name: front
+    build:
+      context: ./front
+      target: development
+    ports:
+      - 8080:8080
+      - 8081:8081
+    volumes:
+      - ./front:/usr/src/front
+      - /usr/src/front/node_modules
+    command: npm run serve
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+  postgres:
+    container_name: postgres
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_USER: root
+      POSTGRES_DB: streamMe
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.com
+      PGADMIN_DEFAULT_PASSWORD: test
+    restart: unless-stopped
+volumes:
+  pgdata:

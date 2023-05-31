@@ -1,0 +1,58 @@
+import { createApp } from "vue";
+import "primevue/resources/themes/bootstrap4-dark-blue/theme.css";
+import "primevue/resources/primevue.min.css";
+import "primeicons/primeicons.css";
+import "/node_modules/primeflex/primeflex.css";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
+
+import PrimeVue from "primevue/config";
+import Card from "primevue/card";
+import Button from "primevue/button";
+import InputText from "primevue/inputtext";
+import Calendar from "primevue/calendar";
+import ProgressSpinner from "primevue/progressspinner";
+import BlockUI from "primevue/blockui";
+import Dialog from "primevue/dialog";
+import Image from "primevue/image";
+import Avatar from "primevue/avatar";
+import Divider from 'primevue/divider';
+import Textarea from 'primevue/textarea';
+import InputSwitch from 'primevue/inputswitch';
+import FileUpload from 'primevue/fileupload';
+import TieredMenu from 'primevue/tieredmenu';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ConfirmPopup from 'primevue/confirmpopup';
+import ConfirmationService from 'primevue/confirmationservice';
+import Toast from 'primevue/toast';
+import ToastService from 'primevue/toastservice';
+
+const app = createApp(App);
+app.use(PrimeVue);
+app.use(store);
+app.use(router);
+app.use(ConfirmationService);
+app.use(ToastService);
+
+app.component("Card", Card);
+app.component("Button", Button);
+app.component("InputText", InputText);
+app.component("Calendar", Calendar);
+app.component("ProgressSpinner", ProgressSpinner);
+app.component("BlockUI", BlockUI);
+app.component("Dialog", Dialog);
+app.component("Image", Image);
+app.component("Avatar", Avatar);
+app.component("Divider", Divider);
+app.component("TextArea", Textarea);
+app.component("InputSwitch", InputSwitch);
+app.component("FileUpload", FileUpload);
+app.component("TieredMenu", TieredMenu);
+app.component("DataTable", DataTable);
+app.component("Column", Column);
+app.component("ConfirmPopup", ConfirmPopup);
+app.component("Toast", Toast);
+
+app.mount("#app");

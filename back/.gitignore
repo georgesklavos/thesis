@@ -34,7 +34,5 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# DATA FOLDERS
-video-files
-video-images-files
-image-files
+*.mp4
+*.png
